@@ -12,8 +12,8 @@ const navItems = [
     href: '/',
   },
   {
-    label: '_about_me',
-    href: '/#aboutme',
+    label: '_about',
+    href: '/about',
   },
   {
     label: '_skills',
@@ -28,7 +28,7 @@ const navItems = [
     href: '/#services',
   },
   {
-    label: '_contact-me',
+    label: '_contact',
     href: '/#contact',
   },
 ]

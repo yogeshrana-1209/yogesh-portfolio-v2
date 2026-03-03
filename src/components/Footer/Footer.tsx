@@ -1,101 +1,93 @@
-import { footerLinks, languages } from '@/appData'
-import { socials } from '@/appData/personal'
-import Logo from '../Navbar/Logo'
+import { Codepen, Facebook, Github, Instagram, Linkedin, X } from 'lucide-react'
+
+const socialIcons = [
+  { href: '#', icon: <Github size={16} /> },
+  { href: '#', icon: <Linkedin size={16} /> },
+  { href: '#', icon: <Codepen size={16} /> },
+  { href: '#', icon: <X size={16} /> },
+  { href: '#', icon: <Instagram size={16} /> },
+  { href: '#', icon: <Facebook size={16} /> },
+]
+
+const footerSections = [
+  {
+    title: 'John Doe',
+    href: '#home',
+    content: 'Crafting high-performance web applications.',
+  },
+  {
+    title: 'About',
+    href: '/about',
+    content: 'Get to know my journey and expertise.',
+  },
+  {
+    title: 'Projects',
+    href: '#projects',
+    content: 'Explore my most impactful work.',
+  },
+  {
+    title: 'Skills',
+    href: '#skills',
+    content: 'Technologies and tools I excel at.',
+  },
+  {
+    title: 'Services',
+    href: '#services',
+    content: 'What I can offer to bring value to your project.',
+  },
+]
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary relative flex min-h-[560px] flex-col justify-between gap-20 overflow-hidden px-4 py-14 md:p-14">
-      <div className="relative z-20 grid grid-cols-1 items-start gap-20 md:grid-cols-2 md:gap-12">
-        <div>
-          <h5 className="mb-8 flex items-center gap-2">
-            <Logo width={30} height={24} />
-            <span className="text-neutral text-lg font-medium">Logoipsum</span>
-          </h5>
-          <p className="text-tertiary-content">
-            The first free end-to-end analytics service for the site, designed to work with
-            enterprises of various levels and business segments.
-          </p>
-          <a
-            href="#"
-            className="text-neutral mt-4 inline-flex items-center gap-2 text-xs hover:underline">
-            More about us <span className="bg-neutral inline-block size-[10px] rounded-full" />
-          </a>
-        </div>
+    <footer className="bg-secondary px-4 py-10">
+      <div className="mx-auto max-w-6xl">
 
-        <div className="flex flex-wrap gap-8">
-          {footerLinks.map((link) => (
-            <a
-              href={link.href}
-              key={link.href}
-              className="text-tertiary-content hover:text-neutral transition-colors duration-300 hover:underline">
-              {link.title}.
-            </a>
+        {/* Top Sections */}
+        <div className="mb-10 grid grid-cols-1 gap-6 md:grid-cols-5">
+          {footerSections.map((section, index) => (
+            <section
+              key={index}
+              className="rounded-2xl border border-neutral bg-secondary p-5 transition-colors duration-300 hover:border-accent"
+            >
+              <a href={section.href} className="block">
+                <h2 className="text-neutral text-lg font-semibold">
+                  {section.title}
+                </h2>
+                <p className="text-tertiary-content mt-2 text-sm">
+                  {section.content}
+                </p>
+              </a>
+            </section>
           ))}
         </div>
-      </div>
 
-      <div className="relative z-20 flex flex-col-reverse gap-20 md:grid md:grid-cols-2 md:gap-12">
-        <div className="grid grid-cols-2 gap-4">
-          <ul className="flex flex-col gap-4">
-            {socials.map((item, index) => (
-              <li key={index} className="cursor-pointer bg-transparent">
-                <a
-                  href={item.href}
-                  className="text-neutral transition-color hover:text-neutral/50 h-full w-full duration-300">
-                  {item.icon}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="text-tertiary-content flex flex-col self-end text-right text-xs md:text-center">
-            <span>© 2026 — Copyright</span>
-            <span>All Rights reserved</span>
-          </p>
-        </div>
+        {/* Bottom Area */}
+        <div className="border-t border-neutral pt-6">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
 
-        <div className="flex flex-col justify-between gap-[200px] md:flex-row md:gap-8">
-          <div className="space-y-10 md:self-end">
-            <div className="flex flex-col">
-              <h5 className="text-neutral mb-4 text-lg font-medium">Contact Us</h5>
-              <a
-                href="mailto:yr70416@gmail.com"
-                className="text-tertiary-content hover:text-neutral text-sm font-light transition-colors duration-300">
-                yr70416@gmail.com
-              </a>
-              <p
-                className="text-tertiary-content hover:text-neutral text-sm font-light transition-colors duration-300">
-                Feel free to reach out directly via email for collaborations, projects, or opportunities.
-              </p>
-            </div>
-            <div>
-              <div>
-                <h5 className="text-neutral mb-4 text-lg font-medium">Location</h5>
-                <address className="text-tertiary-content flex flex-col text-sm font-light">
-                  <span>Anand, Gujarat, India</span>
-                  <span>Developer based in India — Open to remote opportunities and global collaborations.</span>
-                </address>
-              </div>
-            </div>
-          </div>
+            {/* Copyright */}
+            <p className="text-tertiary-content text-sm text-center md:text-left">
+              © 2026 Yogesh Rana | Built with passion using modern web technologies.
+            </p>
 
-          <div className="md:self-end">
-            <p className="text-neutral mb-8 text-sm md:text-right">Languages</p>
-            <div className="flex gap-8 md:gap-4 lg:gap-8">
-              {languages.map((language, idx) => (
-                <span
-                  key={language}
-                  className={idx === 0 ? 'text-neutral' : 'text-tertiary-content'}>
-                  {language}
-                </span>
+            {/* Social Icons */}
+            <ul className="flex flex-wrap justify-center gap-4">
+              {socialIcons.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral text-neutral transition-all duration-300 hover:border-accent hover:text-accent"
+                >
+                  <a
+                    href={item.href}
+                    className="flex h-full w-full items-center justify-center"
+                  >
+                    {item.icon}
+                  </a>
+                </li>
               ))}
-            </div>
-          </div>
-        </div>
-      </div>
+            </ul>
 
-      <div className="bg-neutral/4 absolute top-1/2 -right-[40%] z-0 h-[120dvw] w-[120dvw] -translate-y-1/2 rounded-full p-14 md:top-0 md:-right-[255px] md:-bottom-[450px] md:size-[1030px] md:-translate-y-0 md:p-20">
-        <div className="bg-neutral/4 size-full rounded-full p-14 md:p-20">
-          <div className="bg-neutral/5 size-full rounded-full" />
+          </div>
         </div>
       </div>
     </footer>

@@ -16,32 +16,42 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    let observer: IntersectionObserver
+    if (!cardRef.current) return
 
-    if (cardRef.current) {
-      observer = isInViewport(cardRef.current, handleActiveCard)
-    }
+    const observer = isInViewport(cardRef.current, handleActiveCard)
 
     return () => {
       observer?.disconnect()
     }
-  }, [cardRef.current])
+  }, [handleActiveCard])
 
   return (
     <div
       ref={cardRef}
-      className="bg-secondary border-border flex max-w-full shrink-0 flex-col items-center justify-between gap-4 rounded-2xl border p-4 text-center sm:max-w-[425px]">
+      className="bg-secondary border-border flex max-w-full shrink-0 flex-col items-center justify-between gap-4 rounded-2xl border p-4 text-center sm:max-w-[425px]"
+    >
       <p className="text-neutral text-center leading-8 before:content-['“'] after:content-['”']">
         {feedback}
       </p>
+
       <div>
         <div className="mb-4 flex items-center gap-1.5">
           {Array.from({ length: 5 }, (_, idx) => (
-            <StarIcon key={idx} className={idx < stars ? 'text-tag' : 'text-transparent'} />
+            <StarIcon
+              key={idx}
+              className={idx < stars ? 'text-tag' : 'text-transparent'}
+            />
           ))}
         </div>
+
         <div>
-          <Image src={image} alt={name} width={50} height={50} className="mx-auto rounded-full" />
+          <Image
+            src={image}
+            alt={name}
+            width={50}
+            height={50}
+            className="mx-auto rounded-full"
+          />
           <p className="text-neutral text-lg font-semibold">{name}</p>
           <p className="text-neutral/60 text-sm">{title}</p>
         </div>
