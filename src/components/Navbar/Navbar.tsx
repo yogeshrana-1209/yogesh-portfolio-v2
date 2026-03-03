@@ -12,6 +12,14 @@ const navItems = [
     href: '/',
   },
   {
+    label: '_about_me',
+    href: '/#aboutme',
+  },
+  {
+    label: '_skills',
+    href: '/#skills',
+  },
+  {
     label: '_projects',
     href: '/#projects',
   },
@@ -42,7 +50,7 @@ const Navbar = () => {
           <Link href="/">
             <div className="animate-fade-up text-primary-content relative flex items-center gap-3 transition-all duration-300 md:static">
               <Logo />
-              <span className="text-primary-content">john_doe</span>
+              <span className="text-primary-content">yogesh_rana</span>
             </div>
           </Link>
         )}
